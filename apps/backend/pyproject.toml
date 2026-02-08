@@ -1,0 +1,34 @@
+[project]
+name = "teambuild-backend"
+version = "0.1.0"
+description = "The Brain of Teambuild System"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "django>=6.0",              # The Core
+    "django-ninja>=1.3",        # Fast API + Pydantic v2
+    "channels[daphne]>=4.3.2",    # Real-time WebSockets (The Nervous System)
+    "celery[redis]>=5.4",
+    "redis>=5.0",               # Python client for Redis 8
+    "psycopg[binary]>=3.2",     # PostgreSQL adapter
+    "pydantic>=2.10",           # Data Validation & Schema
+    "gunicorn>=23.0",           # Production WSGI server
+    "uvicorn>=0.34",            # ASGI server worker
+    "python-dotenv>=1.0",       # Environment variables
+    "django-cors-headers>=4.3", # CORS for Next.js/Expo
+    "django-mptt>=0.16",        # (Optional) For Category Tree, or custom recursive
+    "dj-database-url>=2.2",
+    "uv>=25.3",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.9",                # Linter/Formatter (Fastest)
+    "pytest>=8.0",
+    "pytest-django>=4.8",
+    "ipdb>=0.13",               # Debugger
+]
+
+[tool.uv]
+# UV configuration needed for optimal resolution
+package = false
